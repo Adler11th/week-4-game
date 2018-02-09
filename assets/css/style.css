@@ -1,0 +1,31 @@
+body{
+    background: #4e4d47;
+    color:#47474e;
+    text-align: center;
+}
+.wrapper{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    max-width: 960px;
+    margin: auto;
+}
+#header,
+.hero_pull,
+#main{
+    background: #5e4e48;
+    border: 20px solid transparent;
+    border-image: url("../img/BorderFrame.png") 30 stretch;
+    -webkit-border-image: url("../img/BorderFrame.png") 30 stretch;
+    -o-border-image: url("../img/BorderFrame.png") 30 stretch;
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+h1,
+h2,
+h3{
+    color: #fd2856;
+    font-size: 2rem;
+}
