@@ -1,5 +1,7 @@
 body{
-    background: linear-gradient(90deg, #4e4d47, #88825f);
+    background: radial-gradient(circle, #868686, #472d20);
+    background: -webkit-radial-gradient(circle, #868686, #472d20);
+    background: -moz-radial-gradient(circle, #868686, #472d20);
     color:#47474e;
     text-align: center;
 }
@@ -13,11 +15,12 @@ body{
 #header,
 .hero_pull,
 #main{
-    background: #5e4e48;
+    background: #472d20;
     border: 20px solid transparent;
-    border-image: url("../img/BorderFrame.png") 30 stretch;
-    -webkit-border-image: url("../img/BorderFrame.png") 30 stretch;
-    -o-border-image: url("../img/BorderFrame.png") 30 stretch;
+    border-radius: 10px;
+    border-image: url("../img/BorderFrame.png") 40 round;
+    -webkit-border-image: url("../img/BorderFrame.png") 40 round;
+    -o-border-image: url("../img/BorderFrame.png") 40 round;
 }
 header{
     margin-bottom: 1rem;
@@ -30,6 +33,7 @@ h1,
 h2{
     color: #fd2856;
     font-size: 2rem;
+    display: block;
 }
 h3{
     font-size: 1.5rem;
@@ -54,7 +58,8 @@ img{
     height: 100%;
 }
 .btn{
-    display: inline-block;
+    display: inline-flex;
+    margin: auto;
     text-align: center;
     padding: 1rem;
 }
