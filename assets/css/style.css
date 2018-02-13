@@ -54,6 +54,11 @@ h3{
     bottom: 0;
     color: #ffffff;
 }
+.display_attk{
+    position: absolute;
+    bottom: 1.5rem;
+    color: #ffffff;
+}
 img{
     width:100%;
     height: 100%;

@@ -36,6 +36,7 @@ $(document).ready(function () {
             $(".hero_pull").append("<div class = hero-card id = " + objectHolder[key].name + "><img src =" + objectHolder[key].url + "></div>");
             var selectorNewCardId = "#" + objectHolder[key].name;
             $(selectorNewCardId).append("<h3 class = 'display_HP'>" + objectHolder[key].health + " HP</h3>");
+            $(selectorNewCardId).append("<h3 class = 'display_attk'>" + objectHolder[key].attack+" Attk</h3>");
         }
     }
 
@@ -49,10 +50,10 @@ $(document).ready(function () {
         $(selectorOldCard).remove();
         $(nodeClass).prepend("<div class= chosen_card id = " + object.name + "><img src =" + object.url + "></div>");
         $(selectorNewCardId).append("<h3 class = 'display_HP'>" + object.health + " HP</h3>");
+        $(selectorNewCardId).append("<h3 class = 'display_attk'>" + object.attack+" Attk</h3>");
     }
 
     function selectHero(objectHolder, key) {
-        console.log(objectHolder[key]);
         objectHolder[key].available = false;
         return objectHolder[key];
     }
@@ -60,15 +61,13 @@ $(document).ready(function () {
     function checkIfAvailable(){
         for(var key in Heroes){
             if(Heroes[key].available === true){
-                console.log("Heroes available");
                 return true;
             }
         }
-        console.log("Heroes not available");
         return false;
     }
 
-    function startRound(Heroes) {
+    function startRound() {
         $(".enemy_hero div").remove();
         $(".hero-card").hover(function () {
             $(this).css("border", "1px solid #fd2856");
@@ -87,17 +86,16 @@ $(document).ready(function () {
             } else {
                 Object.assign(ENEMYHERO, selectHero(Heroes, this.id));
                 displayHero(ENEMYHERO, ".enemy_hero");
-                $(".hero-card").off("click,round");
+                $("#dialog").text("Attack!");
+                $(".hero-card").off("click.round");
                 $(".hero-card").css("border", "1px solid transparent");
                 $(".hero-card").off("mouseenter mouseleave");
-                $("#dialog").text("Attack!");
                 fight();
             }
         })
     }
 
     function fight(){
-
         $("#attack").on("click", function () {
             if (PLAYERHERO.health > ENEMYHERO.counterAttack) {
                 if (ENEMYHERO.health > PLAYERHERO.attack) {
@@ -116,6 +114,7 @@ $(document).ready(function () {
                         $("#attack").off("click");
                         alert("You Won!");
                         reset();
+                        startRound();
                     }
                 }
     
@@ -123,6 +122,7 @@ $(document).ready(function () {
                 $("#attack").off("click");
                 alert("You lost!");
                 reset();
+                startRound();
             }
     
         })
@@ -148,16 +148,15 @@ $(document).ready(function () {
 
         displayHeroPull(Heroes);
 
-
-        startRound(Heroes);
     }
     //Main
     //====
-
     reset();
+    startRound();
 
     $("#reset").on("click", function () {
         reset();
+        startRound();
     })
 
 })
