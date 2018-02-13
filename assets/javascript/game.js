@@ -16,10 +16,10 @@ $(document).ready(function () {
     //Global Variables
     //================
     var Heroes = {
-        "Vampire": new Hero("Vampire", "assets/img/vampire.png", 100, 8, 8),
-        "Archer": new Hero("Archer", "assets/img/archer.png", 90, 2, 10),
-        "Defender": new Hero("Defender", "assets/img/defender.png", 130, 5, 5),
-        "Mage": new Hero("Mage", "assets/img/mage.png", 80, 8, 10)
+        "Vampire": new Hero("Vampire", "assets/img/vampire.png", 100, 5, 9),
+        "Archer": new Hero("Archer", "assets/img/archer.png", 90, 6, 9),
+        "Defender": new Hero("Defender", "assets/img/defender.png", 120, 3, 13),
+        "Mage": new Hero("Mage", "assets/img/mage.png", 80, 7, 11)
     };
 
     var PLAYERHERO = new Hero;
@@ -42,7 +42,7 @@ $(document).ready(function () {
     function displayLoserPull(object){
         $(".enemy_hero div").remove();
         var selectorNewCardId = "#" + object.name;
-        $(".loser_pull").append("<div class= chosen_card id = " + object.name + "><img src =" + object.url + "></div>");
+        $(".loser_pull").append("<div class= loser_card id = " + object.name + "><img src =" + object.url + "></div>");
         $(selectorNewCardId).append("<h3 class = 'display_name'>" + object.name+"</h3>");
     }
 
@@ -103,35 +103,34 @@ $(document).ready(function () {
 
     function fight(){
         $("#attack").on("click", function () {
-            if (PLAYERHERO.health > ENEMYHERO.counterAttack) {
-                if (ENEMYHERO.health > PLAYERHERO.attack) {
+            if (ENEMYHERO.health > PLAYERHERO.attack) {
+                if (PLAYERHERO.health > ENEMYHERO.counterAttack) {
                     ENEMYHERO.health -= PLAYERHERO.attack;
                     PLAYERHERO.health -= ENEMYHERO.counterAttack;
                     PLAYERHERO.attack += Heroes[PLAYERHERO.name].attack;
                     displayHero(PLAYERHERO, ".player_hero");
                     displayHero(ENEMYHERO, ".enemy_hero");
                 }else{
-                    ENEMYHERO.health -= PLAYERHERO.attack;
-                    $(".loser_pull").show();
-                    displayLoserPull(ENEMYHERO);
-                    if(checkIfAvailable()){
-                        $("#dialog").text("Enemy defeated, pick another hero.");
-                        $("#attack").off("click");
-                        startRound();
-                    }else{
-                        $("#dialog").text("You won!");
-                        $("#attack").off("click");
-                        alert("You Won!");
-                        reset();
-                        startRound();
-                    }
+                    $("#attack").off("click");
+                    alert("You lost!");
+                    reset();
+                    startRound();
                 }
     
             } else {
-                $("#attack").off("click");
-                alert("You lost!");
-                reset();
-                startRound();
+                $(".loser_pull").show();
+                displayLoserPull(ENEMYHERO);
+                if(checkIfAvailable()){
+                    $("#dialog").text("Enemy defeated, pick another hero.");
+                    $("#attack").off("click");
+                    startRound();
+                }else{
+                    $("#dialog").text("You won!");
+                    $("#attack").off("click");
+                    alert("You Won!");
+                    reset();
+                    startRound();
+                }
             }
     
         })
