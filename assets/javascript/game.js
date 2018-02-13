@@ -25,7 +25,6 @@ $(document).ready(function () {
     var PLAYERHERO = new Hero;
     var ENEMYHERO = new Hero;
 
-    GAMEWON = false;
     GAMESTARTED = false;
 
     //Function Declaration
@@ -130,9 +129,10 @@ $(document).ready(function () {
 
     function reset() {
 
-        GAMEWON = false;
 
         GAMESTARTED = false;
+
+        $("#attack").off("click");
 
         $("#dialog").text("Pick your hero!");
 
