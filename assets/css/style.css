@@ -7,13 +7,14 @@ body{
 }
 .wrapper{
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 1rem;
     max-width: 960px;
     margin: auto;
 }
 #header,
 .hero_pull,
+.loser_pull,
 #main{
     background: #472d20;
     border: 20px solid transparent;
@@ -54,7 +55,7 @@ h3{
     bottom: 0;
     color: #ffffff;
 }
-.display_attk{
+.display_name{
     position: absolute;
     bottom: 1.5rem;
     color: #ffffff;

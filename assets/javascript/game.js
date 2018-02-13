@@ -35,8 +35,15 @@ $(document).ready(function () {
             $(".hero_pull").append("<div class = hero-card id = " + objectHolder[key].name + "><img src =" + objectHolder[key].url + "></div>");
             var selectorNewCardId = "#" + objectHolder[key].name;
             $(selectorNewCardId).append("<h3 class = 'display_HP'>" + objectHolder[key].health + " HP</h3>");
-            $(selectorNewCardId).append("<h3 class = 'display_attk'>" + objectHolder[key].attack+" Attk</h3>");
+            $(selectorNewCardId).append("<h3 class = 'display_name'>" + objectHolder[key].name+"</h3>");
         }
+    }
+
+    function displayLoserPull(object){
+        $(".enemy_hero div").remove();
+        var selectorNewCardId = "#" + object.name;
+        $(".loser_pull").append("<div class= chosen_card id = " + object.name + "><img src =" + object.url + "></div>");
+        $(selectorNewCardId).append("<h3 class = 'display_name'>" + object.name+"</h3>");
     }
 
     function displayHero(object, nodeClass) {
@@ -49,7 +56,7 @@ $(document).ready(function () {
         $(selectorOldCard).remove();
         $(nodeClass).prepend("<div class= chosen_card id = " + object.name + "><img src =" + object.url + "></div>");
         $(selectorNewCardId).append("<h3 class = 'display_HP'>" + object.health + " HP</h3>");
-        $(selectorNewCardId).append("<h3 class = 'display_attk'>" + object.attack+" Attk</h3>");
+        $(selectorNewCardId).append("<h3 class = 'display_name'>" + object.name+"</h3>");
     }
 
     function selectHero(objectHolder, key) {
@@ -104,6 +111,9 @@ $(document).ready(function () {
                     displayHero(PLAYERHERO, ".player_hero");
                     displayHero(ENEMYHERO, ".enemy_hero");
                 }else{
+                    ENEMYHERO.health -= PLAYERHERO.attack;
+                    $(".loser_pull").show();
+                    displayLoserPull(ENEMYHERO);
                     if(checkIfAvailable()){
                         $("#dialog").text("Enemy defeated, pick another hero.");
                         $("#attack").off("click");
@@ -139,6 +149,10 @@ $(document).ready(function () {
         $(".btn").hide();
 
         $("#main").hide();
+
+        $(".loser_pull div").remove();
+
+        $(".loser_pull").hide();
 
         for (var key in Heroes) {
             Heroes[key].available = true;
