@@ -16,8 +16,8 @@ body{
 .hero_pull,
 .loser_pull,
 #main{
-    background: #472d20;
-    background: rgba(73, 58, 51, 0.8);
+    background: #5e483d;
+    background: rgba(68, 57, 57, 0.8);
     border: 20px solid transparent;
     border-radius: 10px;
     border-image: url("../img/BorderFrame.png") 40 round;
@@ -45,7 +45,6 @@ h3{
 .loser_card{
     display: inline-flex;
     position: relative;
-    justify-content: center;
     width: 150px;
     height: 150px;
     border-radius: 5px;
@@ -57,11 +56,13 @@ h3{
     height: 200px;
 }
 .display_HP{
+    width: 100%;
     position: absolute;
     bottom: 0;
     color: #ffffff;
 }
 .display_name{
+    width: 100%;
     position: absolute;
     bottom: 1.5rem;
     color: #ffffff;

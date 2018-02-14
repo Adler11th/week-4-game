@@ -31,6 +31,7 @@ $(document).ready(function () {
     //====================
 
     function displayHeroPull(objectHolder) {
+        // $(".hero-card").css("justify-content","center");
         for (var key in objectHolder) {
             $(".hero_pull").append("<div class = hero-card id = " + objectHolder[key].name + "><img src =" + objectHolder[key].url + "></div>");
             var selectorNewCardId = "#" + objectHolder[key].name;
