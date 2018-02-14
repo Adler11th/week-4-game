@@ -1,12 +1,13 @@
 body{
     background: url("../img/bkg_seamless.jpg");
-    /* background-size: cover; */
+    background-size: cover; 
+    background-repeat: no-repeat;
     color:#47474e;
     text-align: center;
 }
 .wrapper{
     display: grid;
-    grid-template-rows: 230px 350px 230px;
+    grid-template-rows: 220px 310px 220px;
     grid-gap: 1rem;
     max-width: 960px;
     margin: auto;
@@ -16,6 +17,7 @@ body{
 .loser_pull,
 #main{
     background: #472d20;
+    background: rgba(73, 58, 51, 0.8);
     border: 20px solid transparent;
     border-radius: 10px;
     border-image: url("../img/BorderFrame.png") 40 round;
@@ -32,7 +34,7 @@ header{
 h1,
 h2{
     color: #fd2856;
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: block;
 }
 h3{
