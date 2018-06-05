@@ -5,4 +5,4 @@ Each hero has different amount of hit points, attack power and counter attack po
 Each hero can win or loose the game depending of how wisely you choose your opponents.
 Attack attribute of players hero gets stronger with each attack.
 
-Have fun here: https://adler11th.github.io/week-4-game/
+Have fun here:  https://maximgalyliak.github.io/week-4-game/
